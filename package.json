@@ -1,0 +1,22 @@
+{
+  "name": "minecraft-bots-web",
+  "version": "2.0.0",
+  "description": "Веб-панель управления Minecraft ботами",
+  "main": "railway-app.js",
+  "scripts": {
+    "start": "node railway-app.js",
+    "client": "node bot-client.js",
+    "dev": "node railway-app.js"
+  },
+  "keywords": ["minecraft", "bot", "mineflayer", "web"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "js-yaml": "^4.1.0",
+    "mineflayer": "^4.20.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

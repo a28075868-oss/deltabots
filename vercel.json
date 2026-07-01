@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/public/standalone.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
+    }
+  ]
+}
+

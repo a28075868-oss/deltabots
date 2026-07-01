@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Bots - Конфигуратор</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Minecraft Bots</h1>
+            <p>Конфигуратор для локального клиента</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Инструкция -->
+            <section class="card alert-info">
+                <h2>ℹ️ Как использовать</h2>
+                <ol>
+                    <li><strong>Настройте параметры</strong> ниже</li>
+                    <li>Нажмите <strong>"Сохранить"</strong></li>
+                    <li>Нажмите <strong>"Экспорт config.json"</strong></li>
+                    <li>Скопируйте файл в папку с ботами</li>
+                    <li>Запустите команду: <code>node bot-client.js</code></li>
+                </ol>
+            </section>
+
+            <!-- Настройки сервера -->
+            <section class="card">
+                <h2>⚙️ Настройки сервера</h2>
+                <div class="settings-grid">
+                    <div class="input-group">
+                        <label>Адрес сервера:</label>
+                        <input type="text" id="serverHost" placeholder="mc.deltaworld.go-mc.pro">
+                    </div>
+                    <div class="input-group">
+                        <label>Порт:</label>
+                        <input type="number" id="serverPort" placeholder="25565">
+                    </div>
+                    <div class="input-group">
+                        <label>Версия Minecraft:</label>
+                        <input type="text" id="serverVersion" placeholder="1.16.5">
+                    </div>
+                    <div class="input-group">
+                        <label>Пароль:</label>
+                        <input type="text" id="authPassword" placeholder="qwer123Q">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Настройки ботов -->
+            <section class="card">
+                <h2>🎮 Настройки ботов</h2>
+                <div class="settings-grid">
+                    <div class="input-group">
+                        <label>Количество ботов:</label>
+                        <input type="number" id="botsCount" placeholder="5" min="1" max="50">
+                    </div>
+                    <div class="input-group">
+                        <label>Префикс имени:</label>
+                        <input type="text" id="botsPrefix" placeholder="Bot">
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="useRandomNames" checked>
+                        Использовать случайные ники из data.yml
+                    </label>
+                </div>
+            </section>
+
+            <!-- Действия -->
+            <section class="card">
+                <h2>💾 Управление конфигурацией</h2>
+                <div class="button-group">
+                    <button onclick="saveConfig()" class="btn btn-primary">💾 Сохранить настройки</button>
+                    <button onclick="exportConfig()" class="btn btn-success">📥 Экспорт config.json</button>
+                    <button onclick="importConfig()" class="btn btn-info">📤 Импорт config.json</button>
+                </div>
+                <input type="file" id="fileInput" accept=".json" style="display: none;">
+            </section>
+
+            <!-- Команда запуска -->
+            <section class="card">
+                <h2>🚀 Запуск ботов</h2>
+                <p>Используйте эту команду на вашем компьютере:</p>
+                <div class="command-box">
+                    <code id="commandOutput">node bot-client.js</code>
+                    <button onclick="copyToClipboard()" class="btn btn-secondary btn-sm">📋 Копировать</button>
+                </div>
+            </section>
+
+            <!-- Инструкция установки -->
+            <section class="card">
+                <h2>📦 Установка и запуск</h2>
+                <div class="instructions">
+                    <h3>1. Установите Node.js</h3>
+                    <p>Скачайте с <a href="https://nodejs.org" target="_blank">nodejs.org</a></p>
+
+                    <h3>2. Скачайте файлы проекта</h3>
+                    <p>Клонируйте репозиторий или скачайте ZIP архив</p>
+
+                    <h3>3. Установите зависимости</h3>
+                    <div class="command-box">
+                        <code>npm install</code>
+                    </div>
+
+                    <h3>4. Экспортируйте config.json</h3>
+                    <p>Нажмите кнопку "Экспорт config.json" выше</p>
+
+                    <h3>5. Запустите ботов</h3>
+                    <div class="command-box">
+                        <code>npm run client</code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Особенности -->
+            <section class="card alert-warning">
+                <h2>⚠️ Важно</h2>
+                <ul>
+                    <li>Vercel не поддерживает долгие WebSocket соединения</li>
+                    <li>Боты должны работать на вашем компьютере или VPS</li>
+                    <li>Эта веб-панель только для настройки конфигурации</li>
+                    <li>Для постоянной работы используйте Railway, Render или VPS</li>
+                </ul>
+            </section>
+
+            <!-- Альтернативы -->
+            <section class="card">
+                <h2>🌐 Альтернативные платформы</h2>
+                <div class="platforms">
+                    <div class="platform-card">
+                        <h3>Railway.app</h3>
+                        <p>$5/месяц бесплатно</p>
+                        <a href="https://railway.app" target="_blank" class="btn btn-primary btn-sm">Перейти →</a>
+                    </div>
+                    <div class="platform-card">
+                        <h3>Render.com</h3>
+                        <p>750 часов бесплатно</p>
+                        <a href="https://render.com" target="_blank" class="btn btn-primary btn-sm">Перейти →</a>
+                    </div>
+                    <div class="platform-card">
+                        <h3>VPS хостинг</h3>
+                        <p>От $3/месяц</p>
+                        <a href="https://www.digitalocean.com" target="_blank" class="btn btn-primary btn-sm">Перейти →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "server": {
+    "host": "mc.deltaworld.go-mc.pro",
+    "port": 25565,
+    "version": "1.16.5"
+  },
+  "bots": {
+    "count": 1,
+    "namePrefix": "masha",
+    "spawnDelay": 1000,
+    "reconnectDelay": 1000,
+    "useRandomNames": true
+  },
+  "behavior": {
+    "autoRespawn": true,
+    "randomMovement": true,
+    "chatResponses": true
+  },
+  "auth": {
+    "autoLogin": true,
+    "password": "qwer123Q"
+  }
+}

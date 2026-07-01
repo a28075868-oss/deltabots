@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Bots - Панель управления</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Minecraft Bots</h1>
+            <p>Панель управления ботами для DeltaWorld</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Настройки -->
+            <section class="card">
+                <h2>⚙️ Настройки сервера</h2>
+                <div class="settings-grid">
+                    <div class="input-group">
+                        <label>Адрес сервера:</label>
+                        <input type="text" id="serverHost" placeholder="mc.deltaworld.go-mc.pro">
+                    </div>
+                    <div class="input-group">
+                        <label>Порт:</label>
+                        <input type="number" id="serverPort" placeholder="25565">
+                    </div>
+                    <div class="input-group">
+                        <label>Версия Minecraft:</label>
+                        <input type="text" id="serverVersion" placeholder="1.16.5">
+                    </div>
+                    <div class="input-group">
+                        <label>Пароль:</label>
+                        <input type="text" id="authPassword" placeholder="qwer123Q">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Настройки ботов -->
+            <section class="card">
+                <h2>🎮 Настройки ботов</h2>
+                <div class="settings-grid">
+                    <div class="input-group">
+                        <label>Количество ботов:</label>
+                        <input type="number" id="botsCount" placeholder="5" min="1" max="50">
+                    </div>
+                    <div class="input-group">
+                        <label>Префикс имени:</label>
+                        <input type="text" id="botsPrefix" placeholder="Bot">
+                    </div>
+                    <div class="input-group">
+                        <label>Задержка спавна (мс):</label>
+                        <input type="number" id="botsSpawnDelay" placeholder="2000">
+                    </div>
+                    <div class="input-group">
+                        <label>Задержка переподключения (мс):</label>
+                        <input type="number" id="botsReconnectDelay" placeholder="5000">
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="autoRespawn" checked>
+                        Автоматическое возрождение
+                    </label>
+                    <label>
+                        <input type="checkbox" id="randomMovement" checked>
+                        Случайное движение
+                    </label>
+                    <label>
+                        <input type="checkbox" id="chatResponses" checked>
+                        Ответы в чате
+                    </label>
+                    <label>
+                        <input type="checkbox" id="autoLogin" checked>
+                        Автоматический логин
+                    </label>
+                    <label>
+                        <input type="checkbox" id="useRandomNames" checked>
+                        Случайные ники из data.yml
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button onclick="saveConfig()" class="btn btn-primary">💾 Сохранить настройки</button>
+                    <button onclick="loadConfig()" class="btn btn-secondary">🔄 Загрузить настройки</button>
+                </div>
+            </section>
+
+            <!-- Управление -->
+            <section class="card">
+                <h2>🎯 Управление ботами</h2>
+                <div class="control-panel">
+                    <button onclick="startBots()" class="btn btn-success">▶️ Запустить ботов</button>
+                    <button onclick="stopBots()" class="btn btn-danger">⏹️ Остановить всех</button>
+                    <button onclick="updateBotsList()" class="btn btn-info">🔄 Обновить список</button>
+                </div>
+            </section>
+
+            <!-- Список ботов -->
+            <section class="card">
+                <h2>📋 Активные боты</h2>
+                <div id="botsList" class="bots-list">
+                    <p class="no-bots">Нет активных ботов. Нажмите "Запустить ботов" для начала работы.</p>
+                </div>
+            </section>
+
+            <!-- Логи -->
+            <section class="card">
+                <h2>📝 Логи</h2>
+                <div class="logs-container">
+                    <select id="botSelect" onchange="updateLogs()">
+                        <option value="">-- Выберите бота --</option>
+                    </select>
+                    <div id="logsDisplay" class="logs-display">
+                        <p>Выберите бота для просмотра логов</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
